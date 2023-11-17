@@ -79,11 +79,12 @@
 
     <script>
         function deobfuscate() {
-            var inputCode = document.getElementById("input-code").value;
-            var outputCode = inputCode;
-            document.getElementById("output-code").value = outputCode;
-            console.log("Deobfuscated JS code: " + outputCode);
-        }
+            function deobfuscate() {
+    var inputCode = document.getElementById("input-code").value;
+    var outputCode = atob(inputCode); // Assuming input is base64-encoded
+
+    document.getElementById("output-code").value = outputCode;
+}
     </script>
 </body>
 
