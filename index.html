@@ -67,7 +67,7 @@
     <main>
         <h2>Deobfuscate JS Code</h2>
         <p>Please enter your obfuscated JS code in the text area below and click the "Deobfuscate" button to see the deobfuscated code.</p>
-        <textarea id="input-code" placeholder="Enter your obfuscated JS code here.2.."></textarea>
+        <textarea id="input-code" placeholder="Enter your obfuscated JS code here..."></textarea>
         <button onclick="deobfuscate()">Deobfuscate</button>
         <h2>Deobfuscated JS Code</h2>
         <textarea id="output-code" readonly placeholder="Deobfuscated JS code will appear here..."></textarea>
@@ -82,23 +82,7 @@
             var inputCode = document.getElementById("input-code").value;
             var outputCode = inputCode;
             document.getElementById("output-code").value = outputCode;
-            var inputCode = document.getElementById("input-code").value;
-var outputCode = atob(inputCode); 
-
-document.getElementById("output-code").value = outputCode;
-var inputCode = document.getElementById("input-code").value;
-var outputCode = inputCode;
-
-
-
-document.getElementById("output-code").value = outputCode;
-var inputCode = document.getElementById("input-code").value;
-var outputCode = inputCode;
-
-
-
-document.getElementById("output-code").value = outputCode;
-
+            console.log("Deobfuscated JS code: " + outputCode);
         }
     </script>
 </body>
