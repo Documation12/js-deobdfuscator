@@ -74,18 +74,17 @@
     </main>
 
     <footer>
-        <p>&copy; 2022 JS Deobfuscation. All rights reserved.</p>
+        <p>&copy; 2023 JS Deobfuscation. All rights reserved.</p>
     </footer>
 
     <script>
         function deobfuscate() {
-            function deobfuscate() {
-    var inputCode = document.getElementById("input-code").value;
-    var outputCode = atob(inputCode); // Assuming input is base64-encoded
+            var inputCode = document.getElementById("input-code").value;
+            var outputCode = atob(inputCode); // Decode base64-encoded string
 
-    document.getElementById("output-code").value = outputCode;
-}
-
+            document.getElementById("output-code").value = outputCode;
+        }
+    </script>
 </body>
 
 </html>
