@@ -1,90 +1,88 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Deobfuscation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1e1e1e;
-            color: #ffffff;
-        }
-
-        header {
-            background-color: #2b2b2b;
-            padding: 20px;
-            text-align: center;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        footer {
-            background-color: #2b2b2b;
-            padding: 20px;
-            text-align: center;
-        }
-
-        textarea {
-            width: 100%;
-            height: 200px;
-            padding: 12px 20px;
-            box-sizing: border-box;
-            border: 2px solid #555;
-            border-radius: 4px;
-            background-color: #232323;
-            font-size: 16px;
-            resize: none;
-            color: #ffffff;
-        }
-
-        button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>ARMATURA HWID SYSTEM</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #0f0f0f;
+    }
+    
+    #container {
+      width: 400px;
+      height: 150px;
+      background-color: #0f0f0f;
+      border: 1px solid #313131;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    h1 {
+      color: #0066FF;
+      font-weight: bold;
+      font-size: 24px;
+      font-family: "Arial Black", Gadget, sans-serif;
+      margin-top: -35px; 
+    }
+    
+    .btn {
+      background-color: #0066FF;
+      color: #ffffff;
+      border: none; 
+      border-radius: 10px; 
+      padding: 20px 40px; 
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <h1>JS Deobfuscation</h1>
-    </header>
-
-    <main>
-        <h2>Deobfuscate JS Code</h2>
-        <p>Please enter your obfuscated JS code in the text area below and click the "Deobfuscate" button to see the deobfuscated code.</p>
-        <textarea id="input-code" placeholder="Enter your obfuscated JS code here..."></textarea>
-        <button onclick="deobfuscate()">Deobfuscate</button>
-        <h2>Deobfuscated JS Code</h2>
-        <textarea id="output-code" readonly placeholder="Deobfuscated JS code will appear here..."></textarea>
-    </main>
-
-    <footer>
-        <p>&copy; Features are js base64 deobfuscation.</p>
-    </footer>
-
-    <script>
-        function deobfuscate() {
-            var inputCode = document.getElementById("input-code").value;
-            var outputCode = atob(inputCode); // Decode base64-encoded string
-
-            document.getElementById("output-code").value = outputCode;
-        }
-    </script>
+  <div id="container">
+    <h1>ARMATURA HWID SYSTEM</h1>
+    <button class="btn" onclick="getHWID()">GET HWID</button>
+  </div>
+  <script src="js/js.js"></script>
+  <script>
+function getHWID() {
+function getHWID() {
+  var b = document.createElement("canvas");
+  try {
+    var a = b.getContext("webgl") || b.getContext("experimental-webgl");
+  } catch (e) {
+  }
+  if (a) {
+    var d = a.getExtension("WEBGL_debug_renderer_info");
+    var c = a.getParameter(d.UNMASKED_VENDOR_WEBGL);
+    d = a.getParameter(d.UNMASKED_RENDERER_WEBGL);
+  }
+  a = (new DeviceUUID()).parse();
+  b = [a.os, a.cpuCores, a.isDesktop, a.isWindows, a.isLinux64, a.isMac, a.isLinux];
+  c = btoa(d + c) + a.hashMD5(b.join(":"));
+  c = Array.from(c).map(function(e) {
+    return String.fromCodePoint(127880 + e.charCodeAt(0));
+  }).join("");
+  console.log(c);
+  copyToClipboard(c);
+}
+function copyToClipboard(b) {
+  navigator.clipboard.writeText(b).then(function() {
+    alert("WHID copied!");
+  })["catch"](function(a) {
+    console.error("\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0441\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c WHID: ", a);
+  });
+}
+getHWID();
+}
+  </script>
 </body>
-
 </html>
