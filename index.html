@@ -53,35 +53,49 @@
   <script src="js/js.js"></script>
   <script>
     function getHWID() {
-function getHWID() {
-  var b = document.createElement("canvas");
   try {
-    var a = b.getContext("webgl") || b.getContext("experimental-webgl");
-  } catch (e) {
+    const canvas = document.createElement("canvas");
+    const gl =
+      canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    if (!gl) {
+      throw new Error("WebGL not supported");
+    }
+
+    const debugInfo = gl.getExtension("WEBGL_debug_renderer_info");
+    if (!debugInfo) {
+      throw new Error("WEBGL_debug_renderer_info extension not available");
+    }
+
+    const vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+    const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+
+    const { os, cpuCores, isDesktop, isWindows, isLinux64, isMac, isLinux } = new DeviceUUID().parse();
+    const hash = md5(vendor + renderer + os + cpuCores + isDesktop + isWindows + isLinux64 + isMac + isLinux);
+    
+    const hwid = Array.from(hash).map((char) =>
+      String.fromCodePoint(127880 + char.charCodeAt(0))
+    ).join("");
+
+    copyToClipboard(hwid);
+    console.log(hwid);
+    alert("HWID copied!");
+  } catch (error) {
+    console.error("Failed to generate HWID:", error);
+    alert("Failed to generate HWID. Check console for details.");
   }
-  if (a) {
-    var d = a.getExtension("WEBGL_debug_renderer_info");
-    var c = a.getParameter(d.UNMASKED_VENDOR_WEBGL);
-    d = a.getParameter(d.UNMASKED_RENDERER_WEBGL);
-  }
-  a = (new DeviceUUID()).parse();
-  b = [a.os, a.cpuCores, a.isDesktop, a.isWindows, a.isLinux64, a.isMac, a.isLinux];
-  c = btoa(d + c) + a.hashMD5(b.join(":"));
-  c = Array.from(c).map(function(e) {
-    return String.fromCodePoint(127880 + e.charCodeAt(0));
-  }).join("");
-  console.log(c);
-  copyToClipboard(c);
 }
-function copyToClipboard(b) {
-  navigator.clipboard.writeText(b).then(function() {
-    alert("WHID copied!");
-  })["catch"](function(a) {
-    console.error("\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0441\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c WHID: ", a);
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(function () {
+    console.log("Text copied to clipboard:", text);
+  }).catch(function (err) {
+    console.error("Unable to copy to clipboard:", err);
+    alert("Failed to copy HWID to clipboard.");
   });
 }
+
 getHWID();
-}
+
   </script>
 </body>
 </html>
