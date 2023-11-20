@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>ARMATURA HWID SYSTEM</title>
@@ -12,13 +11,14 @@
       height: 100vh;
       margin: 0;
       background-color: #0f0f0f;
+      font-family: Arial, sans-serif;
     }
     
     #container {
       width: 400px;
-      height: 150px;
-      background-color: #0f0f0f;
-      border: 1px solid #313131;
+      height: 200px;
+      background-color: #1a1a1a;
+      border: 2px solid #313131;
       border-radius: 15px;
       display: flex;
       flex-direction: column;
@@ -30,8 +30,7 @@
       color: #0066FF;
       font-weight: bold;
       font-size: 24px;
-      font-family: "Arial Black", Gadget, sans-serif;
-      margin-top: -35px; 
+      margin: 0 0 20px;
     }
     
     .btn {
@@ -39,7 +38,7 @@
       color: #ffffff;
       border: none; 
       border-radius: 10px; 
-      padding: 20px 40px; 
+      padding: 15px 30px; 
       font-weight: bold;
       cursor: pointer;
       font-size: 16px;
@@ -53,36 +52,47 @@
   </div>
   <script src="js/js.js"></script>
   <script>
-function getHWID() {
-function getHWID() {
-  var b = document.createElement("canvas");
-  try {
-    var a = b.getContext("webgl") || b.getContext("experimental-webgl");
-  } catch (e) {
-  }
-  if (a) {
-    var d = a.getExtension("WEBGL_debug_renderer_info");
-    var c = a.getParameter(d.UNMASKED_VENDOR_WEBGL);
-    d = a.getParameter(d.UNMASKED_RENDERER_WEBGL);
-  }
-  a = (new DeviceUUID()).parse();
-  b = [a.os, a.cpuCores, a.isDesktop, a.isWindows, a.isLinux64, a.isMac, a.isLinux];
-  c = btoa(d + c) + a.hashMD5(b.join(":"));
-  c = Array.from(c).map(function(e) {
-    return String.fromCodePoint(127880 + e.charCodeAt(0));
-  }).join("");
-  console.log(c);
-  copyToClipboard(c);
-}
-function copyToClipboard(b) {
-  navigator.clipboard.writeText(b).then(function() {
-    alert("WHID copied!");
-  })["catch"](function(a) {
-    console.error("\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0441\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c WHID: ", a);
-  });
-}
-getHWID();
-}
+    function getHWID() {
+      try {
+        var canvas = document.createElement("canvas");
+        var gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+        var renderer = gl.getParameter(gl.RENDERER);
+        var vendor = gl.getParameter(gl.VENDOR);
+      } catch (e) {}
+
+      var deviceUUID = new DeviceUUID();
+      var parsedUUID = deviceUUID.parse();
+      var details = [
+        parsedUUID.os,
+        parsedUUID.cpuCores,
+        parsedUUID.isDesktop,
+        parsedUUID.isWindows,
+        parsedUUID.isLinux64,
+        parsedUUID.isMac,
+        parsedUUID.isLinux
+      ];
+
+      var concatenatedDetails = details.join(":");
+      var hash = deviceUUID.hashMD5(concatenatedDetails);
+      var combined = btoa(renderer + vendor) + hash;
+      
+      var emojiHWID = Array.from(combined).map(function(char) {
+        return String.fromCodePoint(127880 + char.charCodeAt(0));
+      }).join("");
+
+      console.log(emojiHWID);
+      copyToClipboard(emojiHWID);
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        alert("HWID copied!");
+      }).catch(function(error) {
+        console.error("Failed to copy HWID: ", error);
+      });
+    }
+
+    getHWID();
   </script>
 </body>
 </html>
