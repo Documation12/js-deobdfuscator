@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JavaScript ObfuscatorV2</title>
+  <title>JavaScript Obfuscator</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -39,18 +39,17 @@
       font-size: 16px;
       cursor: pointer;
     }
-  </style>
 </head>
 <body>
   <header>
-    <h1>JavaScript Obfuscator</h1>
+    <h1>JavaScript Obfuscatorv2</h1>
   </header>
   <main>
     <textarea id="inputCode" placeholder="Enter your JavaScript code here"></textarea>
     <button id="obfuscateBtn">Obfuscate</button>
     <textarea id="outputCode" placeholder="Obfuscated code will appear here" readonly></textarea>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator-browser/dist/index.js"></script>
   <script>
     document.getElementById('obfuscateBtn').addEventListener('click', function() {
       const inputCode = document.getElementById('inputCode').value;
@@ -59,14 +58,7 @@
     });
 
     function obfuscateJavaScript(code) {
-      // Use JavaScript Obfuscator library if it's loaded correctly
-      if (typeof JavaScriptObfuscator === 'undefined') {
-        console.error('JavaScriptObfuscator library is not loaded!');
-        return code; // Fallback to original code
-      }
-      
-      const obfuscationResult = JavaScriptObfuscator.obfuscate(code);
-      return obfuscationResult.getObfuscatedCode();
+      return javascriptObfuscator.obfuscate(code).getObfuscatedCode();
     }
   </script>
 </body>
