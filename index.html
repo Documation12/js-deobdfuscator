@@ -64,7 +64,6 @@ button:active {
     <button id="obfuscateBtn">Obfuscate</button>
     <textarea id="outputCode" placeholder="Obfuscated code will appear here" readonly></textarea>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator-browser/dist/index.js"></script>
   <script>
     document.getElementById('obfuscateBtn').addEventListener('click', function() {
       const inputCode = document.getElementById('inputCode').value;
@@ -73,9 +72,20 @@ button:active {
     });
 
     function obfuscateJavaScript(code) {
-      const javascriptObfuscator = new JavaScriptObfuscator(); // Instantiate the obfuscator
-      return javascriptObfuscator.obfuscate(code).getObfuscatedCode();
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.text = `try { const obfuscatedCode = JavaScriptObfuscator.obfuscate(${JSON.stringify(code)}).getObfuscatedCode(); parent.postMessage({ obfuscatedCode }, '*'); } catch (e) { parent.postMessage({ error: e.message }, '*'); }`;
+      document.head.appendChild(script);
     }
+
+    window.addEventListener('message', function(event) {
+      if (event.data.obfuscatedCode) {
+        document.getElementById('outputCode').value = event.data.obfuscatedCode;
+      } else if (event.data.error) {
+        alert('An error occurred during obfuscation: ' + event.data.error);
+      }
+    }, false);
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator-browser/dist/index.js"></script>
 </body>
 </html>
