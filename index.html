@@ -2,6 +2,17 @@
 <html>
 <head>
   <title>JavaScript Obfuscator</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    textarea, button {
+      margin: 10px 0;
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -25,10 +36,10 @@ function obfuscate() {
 }
 
 function obfuscateCode(code) {
-  // Basic obfuscation: simple character substitution
+  // Basic obfuscation using string manipulation
   var obfuscated = '';
   for (var i = 0; i < code.length; i++) {
-    obfuscated += String.fromCharCode(code.charCodeAt(i) + 1);
+    obfuscated += String.fromCharCode(code.charCodeAt(i) + i);
   }
   return obfuscated;
 }
