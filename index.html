@@ -25,10 +25,12 @@ function obfuscate() {
 }
 
 function obfuscateCode(code) {
-  // Basic obfuscation: replace characters with unicode escape sequences
-  return code.replace(/[a-zA-Z]/g, function(c) {
-    return "\\u" + ("0000" + c.charCodeAt(0).toString(16)).slice(-4);
-  });
+  // Basic obfuscation: simple character substitution
+  var obfuscated = '';
+  for (var i = 0; i < code.length; i++) {
+    obfuscated += String.fromCharCode(code.charCodeAt(i) + 1);
+  }
+  return obfuscated;
 }
 </script>
 
