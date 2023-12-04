@@ -1,49 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>JavaScript Obfuscator</title>
   <style>
     body {
-      background-color: black;
-      color: white;
       font-family: Arial, sans-serif;
     }
-    textarea, button {
-      margin: 10px 0;
-      display: block;
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    textarea {
+      width: 80%;
+      height: 200px;
+      margin-bottom: 20px;
+      padding: 10px;
+      resize: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.js"></script>
 </head>
 <body>
+  <header>
+    <h1>JavaScript Obfuscator</h1>
+  </header>
+  <main>
+    <textarea id="inputCode" placeholder="Enter your JavaScript code here"></textarea>
+    <button id="obfuscateBtn">Obfuscate</button>
+    <textarea id="outputCode" placeholder="Obfuscated code will appear here" readonly></textarea>
+  </main>
+  <script>
+    document.getElementById('obfuscateBtn').addEventListener('click', function() {
+      const inputCode = document.getElementById('inputCode').value;
+      const obfuscatedCode = obfuscateJavaScript(inputCode);
+      document.getElementById('outputCode').value = obfuscatedCode;
+    });
 
-<textarea id="originalCode" rows="10" cols="50">
-function add(a, b) {
-  return a + b;
-}
-
-console.log(add(5, 3));
-</textarea>
-
-<button onclick="obfuscate()">Obfuscate</button>
-
-<textarea id="obfuscatedCode" rows="10" cols="50" readonly></textarea>
-
-<script>
-function obfuscate() {
-  var originalCode = document.getElementById("originalCode").value;
-  var obfuscatedCode = obfuscateCode(originalCode);
-  document.getElementById("obfuscatedCode").value = obfuscatedCode;
-}
-
-function obfuscateCode(code) {
-  // Basic obfuscation using string manipulation
-  var obfuscated = '';
-  for (var i = 0; i < code.length; i++) {
-    obfuscated += String.fromCharCode(code.charCodeAt(i) + i);
-  }
-  return obfuscated;
-}
-</script>
-
+    function obfuscateJavaScript(code) {
+      // Use JavaScript Obfuscator library
+      const obfuscationResult = JavaScriptObfuscator.obfuscate(code);
+      return obfuscationResult.getObfuscatedCode();
+    }
+  </script>
 </body>
 </html>
