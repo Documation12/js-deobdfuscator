@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- begin::Head -->
@@ -315,7 +316,22 @@ File size ({1}) is too large. The maximum file size allowed is set to: {2}." Max
 				<div class="col-lg-6">
 					<div class="form-group">
 						<textarea name="ctl00$MainContent$TextBox1" rows="12" cols="20" id="ctl00_MainContent_TextBox1" class="form-control" spellcheck="false" placeholder="Input Javascript code here">
-sd</textarea>
+function NewObject(prefix)
+{
+    var count=0;
+    this.SayHello=function(msg)
+    {
+          count++;
+          alert(prefix+msg);
+    }
+    this.GetCount=function()
+    {
+          return count;
+    }
+}
+var obj=new NewObject(&quot;Message : &quot;);
+obj.SayHello(&quot;You are welcome.&quot;);
+						</textarea>
 					</div>
 				</div>
 				<!-- End Col -->
@@ -323,7 +339,7 @@ sd</textarea>
 				<div class="col-lg-6">
 					<div class="form-group">
 						<textarea name="ctl00$MainContent$TextBox2" rows="12" cols="20" id="ctl00_MainContent_TextBox2" class="form-control" spellcheck="false" placeholder="Obfuscated result">
-(function(){var JXN=&#39;&#39;,sQs=722-711;function Klw(u){var k=3398700;var o=u.length;var d=[];for(var h=0;h&lt;o;h++){d[h]=u.charAt(h)};for(var h=0;h&lt;o;h++){var z=k*(h+507)+(k%30233);var j=k*(h+568)+(k%44765);var t=z%o;var w=j%o;var g=d[t];d[t]=d[w];d[w]=g;k=(z+j)%3466924;};return d.join(&#39;&#39;)};var Hxx=Klw(&#39;olntfmbsixsaqtuecyhpjzgnurcvctdkrowor&#39;).substr(0,sQs);var xJP=&#39;v==jmic91hzr,au=hapr+[=f+=hbctr;o9j;Armnz]q6.(xvsx;rr;g (}rv&lt;1i2(l ir;7t,sgi;{]fr=xrl(biu4v)(i(0) 6+r5;mnn8Ci8&quot;l&lt;wlb+t8tj6*p=8oe8=..o=5 .];-)00n&lt;[2wn[})muauaglgu[(f7)y11 ;t)vl.[.;e)h1yn4sts(;0z=r][fq)jva(st}3o+ ah6sag6]t3+trnrr,=;pv.]79tvy)2gupl()sxtl{ ar;*d) uia()(;sarol(aer=k(as(&quot;l,,)+an-]xod;i6p(7u;l+s.r=u.= Ciwgoe rtn.o=;vn9)1+0 =ur,d&quot;; l)+g=]+tCrar+-olai rv(n);h)i;e.&quot;,sn)fer=r.vf0be+g;aecm)tsvrrl==&lt;{]9;ip8=(vlu(=arya;relh,i,;.t.-6if1)-r;t=h.=+lcmr(,A[tfrr==a){aw&quot;&quot;0,jco+g[w-hh&quot;a,on9nCye;8,g2rtsecvfr cveoe(5iinn}!e&gt; v0cb7 0t[e]=x;tv==un4e8(iib))6.jh} &quot;yeCs r vs;,{;fs2l;8&lt;)dilpg&quot;ig(sl])lndhp,7.vn=u.1ea;v=h.+a(i{(h(=;=.garc ;t;;gvspn,;,C-i++]v.(xf{a=s,rvcf0C+dpoAm)ajh0)!ltsd,a([qef;vgn1,SC==e;;y4&quot;+arvz}.toy=0rrjh399rhu+ ()c+.,+,in[i2)Avt; =r n36A)[=ro.]p=,v+j;)tee=1(rrrsryys54soq.1&gt;anola.(ti+r;,cprat4e,[.uhcfl);}eid4ovo]sh=mot;fr(me7a2,u ;uai1daghmn);i(a),vjyiagSd[hl2urf 7(0i;&#39;;var Euw=Klw[Hxx];var KBN=&#39;&#39;;var rko=Euw;var Qnt=Euw(KBN,Klw(xJP));var LCl=Qnt(Klw(&#39;sd&#39;));var dmh=rko(JXN,LCl );dmh(3857);return 6201})()</textarea>
+</textarea>
 					</div>
 				</div>
 				<!-- End Col -->
@@ -357,19 +373,19 @@ sd</textarea>
 
 						<ul class="list-unstyled">
 							<li>
-								<input id="ctl00_MainContent_cbLineBR" type="checkbox" name="ctl00$MainContent$cbLineBR" /><label for="ctl00_MainContent_cbLineBR">   Keep Linefeeds</label></li>
+								<input id="ctl00_MainContent_cbLineBR" type="checkbox" name="ctl00$MainContent$cbLineBR" /><label for="ctl00_MainContent_cbLineBR">   Keep Linefeeds</label></li>
 							<li>
-								<input id="ctl00_MainContent_cbIndent" type="checkbox" name="ctl00$MainContent$cbIndent" /><label for="ctl00_MainContent_cbIndent">   Keep Indentations</label></li>
+								<input id="ctl00_MainContent_cbIndent" type="checkbox" name="ctl00$MainContent$cbIndent" /><label for="ctl00_MainContent_cbIndent">   Keep Indentations</label></li>
 							<li>
-								<input id="ctl00_MainContent_cbEncodeStr" type="checkbox" name="ctl00$MainContent$cbEncodeStr" checked="checked" /><label for="ctl00_MainContent_cbEncodeStr">   Encode Strings</label></li>
+								<input id="ctl00_MainContent_cbEncodeStr" type="checkbox" name="ctl00$MainContent$cbEncodeStr" checked="checked" /><label for="ctl00_MainContent_cbEncodeStr">   Encode Strings</label></li>
 							<li>
-								<input id="ctl00_MainContent_cbMoveStr" type="checkbox" name="ctl00$MainContent$cbMoveStr" checked="checked" /><label for="ctl00_MainContent_cbMoveStr">   Move Strings</label></li>
+								<input id="ctl00_MainContent_cbMoveStr" type="checkbox" name="ctl00$MainContent$cbMoveStr" checked="checked" /><label for="ctl00_MainContent_cbMoveStr">   Move Strings</label></li>
 							<li>
-								<input id="ctl00_MainContent_cbReplaceNames" type="checkbox" name="ctl00$MainContent$cbReplaceNames" checked="checked" /><label for="ctl00_MainContent_cbReplaceNames">   Replace Names</label></li>
+								<input id="ctl00_MainContent_cbReplaceNames" type="checkbox" name="ctl00$MainContent$cbReplaceNames" checked="checked" /><label for="ctl00_MainContent_cbReplaceNames">   Replace Names</label></li>
 						</ul>
 
 						<textarea name="ctl00$MainContent$tbfeatures" rows="2" cols="20" id="ctl00_MainContent_tbfeatures" boxid="tbfeatures" style="display: none">
-Short Local Name,Compressor,Deep Obfuscation,Code Transposition,Dead Code Insertion,Cross File Obfuscation,Replace Globals,Keep Header Comment,Move Members,Move Strings,Encode Strings,Encrypt Strings,Flat Transform</textarea>
+-</textarea>
 					</div>
 				</div>
 				<!-- End Card Body -->
