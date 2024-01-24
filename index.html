@@ -82,18 +82,14 @@
             // Get the obfuscated code from the textarea
             var obfuscatedCode = document.getElementById("input-code").value;
 
-            // Implement your deobfuscation logic here
-            // This is a simple example, you might need to adjust it based on your specific obfuscation technique
-            var deobfuscatedCode;
-
+            // Implement your deobfuscation logic here using the Function constructor
             try {
-                deobfuscatedCode = eval('(' + obfuscatedCode + ')');
+                var deobfuscatedCode = new Function(obfuscatedCode);
+                deobfuscatedCode();
+                document.getElementById("output-code").value = "Deobfuscation successful. Check console for output.";
             } catch (error) {
-                deobfuscatedCode = "Error during deobfuscation: " + error.message;
+                document.getElementById("output-code").value = "Error during deobfuscation: " + error.message;
             }
-
-            // Display the deobfuscated code in the output textarea
-            document.getElementById("output-code").value = deobfuscatedCode;
         }
     </script>
 </body>
