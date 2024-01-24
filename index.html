@@ -1,11 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Deobfuscation Tool</title>
+    <title>JS Deobfuscation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        header {
+            background-color: #2b2b2b;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #2b2b2b;
+            padding: 20px;
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #555;
+            border-radius: 4px;
+            background-color: #232323;
+            font-size: 16px;
+            resize: none;
+            color: #ffffff;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
 </head>
+
 <body>
-    <script src="your-deobfuscation-script.js"></script>
+    <header>
+        <h1>JS Deobfuscation</h1>
+    </header>
+
+    <main>
+        <h2>Deobfuscate JS Code</h2>
+        <p>Please enter your obfuscated JS code in the text area below and click the "Deobfuscate" button to see the deobfuscated code.</p>
+        <textarea id="input-code" placeholder="Enter your obfuscated JS code here.2.."></textarea>
+        <button onclick="deobfuscate()">Deobfuscate</button>
+        <h2>Deobfuscated JS Code</h2>
+        <textarea id="output-code" readonly placeholder="Deobfuscated JS code will appear here..."></textarea>
+    </main>
+
+    <footer>
+        <p>&copy; 2022 JS Deobfuscation. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function deobfuscate() {
+            var inputCode = document.getElementById("input-code").value;
+            var outputCode = inputCode;
+            document.getElementById("output-code").value = outputCode;
+            var inputCode = document.getElementById("input-code").value;
+var outputCode = atob(inputCode); 
+
+document.getElementById("output-code").value = outputCode;
+var inputCode = document.getElementById("input-code").value;
+var outputCode = inputCode;
+
+
+
+document.getElementById("output-code").value = outputCode;
+var inputCode = document.getElementById("input-code").value;
+var outputCode = inputCode;
+
+
+
+document.getElementById("output-code").value = outputCode;
+
+        }
+    </script>
 </body>
+
 </html>
