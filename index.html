@@ -85,8 +85,8 @@
             // Implement your deobfuscation logic here using the Function constructor
             try {
                 var deobfuscatedCode = new Function(obfuscatedCode);
-                deobfuscatedCode();
-                document.getElementById("output-code").value = "Deobfuscation successful. Check console for output.";
+                var result = deobfuscatedCode();
+                document.getElementById("output-code").value = result;
             } catch (error) {
                 document.getElementById("output-code").value = "Error during deobfuscation: " + error.message;
             }
