@@ -78,17 +78,24 @@
     </footer>
 
     <script>
-    function deobfuscate() {
+        function deobfuscate() {
             // Get the obfuscated code from the textarea
             var obfuscatedCode = document.getElementById("input-code").value;
 
             // Implement your deobfuscation logic here
             // This is a simple example, you might need to adjust it based on your specific obfuscation technique
-            var deobfuscatedCode = eval('(' + obfuscatedCode + ')');
+            var deobfuscatedCode;
+
+            try {
+                deobfuscatedCode = eval('(' + obfuscatedCode + ')');
+            } catch (error) {
+                deobfuscatedCode = "Error during deobfuscation: " + error.message;
+            }
 
             // Display the deobfuscated code in the output textarea
             document.getElementById("output-code").value = deobfuscatedCode;
         }
     </script>
 </body>
+
 </html>
